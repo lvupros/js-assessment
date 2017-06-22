@@ -88,7 +88,7 @@ exports.arraysAnswers = {
   square: function(arr) {
     var square = [];
     for (var i = 0; i < arr.length; i++) {
-      square.push(arr[i] * arr[i]);
+      square.push(arr[i] ** 2);
     }
     return square;
   },
