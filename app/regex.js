@@ -27,7 +27,7 @@ exports.regexAnswers = {
 
   isUSD: function(str) {
     // always start with $
-    // always end with .xx
+    // sometimes end with .xx
 
     return /^\$\d{1,3}(,\d{3})*(\.\d{2})?$/.test(str);
   }
