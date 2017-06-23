@@ -22,7 +22,8 @@ exports.regexAnswers = {
   },
 
   matchesPattern: function(str) {
-    return /^\d\d\d\-\d\d\d\-\d\d\d\d$/.test(str);
+    // return /^\d\d\d\-\d\d\d\-\d\d\d\d$/.test(str);
+    return /^\d{3}\-\d{3}\-\d{4}$/.test(str);
   },
 
   isUSD: function(str) {
