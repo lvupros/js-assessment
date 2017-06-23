@@ -24,33 +24,28 @@ exports.stringsAnswers = {
     var newStr = "";
     var subStr = "";
     var arr = str.split(" ");
-    var count = 0; // counts words in subStr
-
+    
     for (var i = 0; i < arr.length; i++) {
       subStr += arr[i];
       if (subStr.length >= cols) {
-        if (subStr.indexOf(" ") != -1) {
-          if (count != 2) {
-            newStr += subStr.replace(" ", "\n");
-          }
-          else {
-            newStr += subStr;
-          }
+        if (subStr.length == cols) {
+          newStr += subStr + "\n";
+        }
+        else if (subStr.indexOf(" ") != -1) {
+          newStr += subStr.replace(" ", "\n") + "\n";
         }
         else {
-          newStr += subStr;
-          newStr += "\n";
+          newStr += subStr + "\n";
         }
         subStr = "";
       }
       else {
-        count++;
         subStr += " ";
       }
     }
-    newStr += "\n" + subStr;
+    newStr += subStr
     return newStr.trim();
-  }, // i feel like some of these ifs were very catered to the test cases but oh well.
+  }, 
 
   reverseString: function(str) {
     var newStr = ""
