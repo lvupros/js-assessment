@@ -6,7 +6,21 @@ exports.recursionAnswers = {
   },
 
   permute: function(arr) {
+    var newArr = [];
 
+    function combine(list1, list2) {
+      if (list1.length == 0) {
+        newArr.push(list2);
+      }
+      for (var i = 0; i < list1.length; i++) {
+        list2.push(list1[i]);
+        list1.splice(i, 1);
+        combine(list1, list2);
+      }
+    }
+
+    combine(arr, newArr);
+    return newArr;
   },
 
   fibonacci: function(n) {
