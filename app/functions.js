@@ -61,10 +61,32 @@ exports.functionsAnswers = {
   },
 
   partialUsingArguments: function(fn) {
-    
+    var given = Array.prototype.slice.call(arguments, 1, arguments.length);
+
+    return function() {
+      var remaining = given.concat(Array.prototype.slice.call(arguments));
+      return fn.apply(null, remaining);
+    }
   },
 
   curryIt: function(fn) {
+    // similar to functionFunction, but let keep calling until args satisfied
 
+    function helper(_fn, args) {
+      return _fn.apply(null, args);
+    }
+
+    function final(args, expectedLen) {
+      return function(current) {
+        args.push(current);
+        if (args.length === expectedLen) {
+          return helper(fn, args);
+        }
+        // recursive call, keep doing until num args expected obtained
+        return final(args, expectedLen);
+      }
+    }
+
+    return final([], fn.length);
   }
 };

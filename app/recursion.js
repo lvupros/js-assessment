@@ -7,9 +7,10 @@ exports.recursionAnswers = {
 
     function nav(dir) {
       var file;
+      // call dir property files
       var files = dir.files;
 
-      // folder in folder
+      // push dir property dir
       dirArr.push(dir.dir);
 
       // all files in folder to array
@@ -27,7 +28,7 @@ exports.recursionAnswers = {
       dirArr.pop();
     }
 
-    // feed in filepath and associated files
+    // feed in filepath and associated files as object
     nav(data);
     return filesArr;
   },
