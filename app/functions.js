@@ -16,15 +16,37 @@ exports.functionsAnswers = {
   },
 
   functionFunction: function(str) {
-
+    var str1, str2;
+    str1 = str;
+    // obtain second parenthesis argument
+    function second(str) {
+      str2 = str;
+      return str1 + ", " + str2;
+    }
+    // callback
+    return second;
   },
 
   makeClosures: function(arr, fn) {
+    var newArr = [];
 
+    var calculate = function(num) {
+      return function() {
+        return fn(num);
+      }
+    }
+
+    for (var i = 0; i < arr.length; i++) {
+      newArr.push(calculate(arr[i]));
+    }
+
+    return newArr;
   },
 
   partial: function(fn, str1, str2) {
-
+    return function(newPunct) {
+      return fn(str1, str2, newPunct);
+    };
   },
 
   useArguments: function(a = 0, b = 0, c = 0, d = 0) {
@@ -39,10 +61,10 @@ exports.functionsAnswers = {
   },
 
   partialUsingArguments: function(fn) {
-
+    
   },
 
   curryIt: function(fn) {
-    return fn();
+
   }
 };
