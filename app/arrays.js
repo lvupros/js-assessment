@@ -41,7 +41,7 @@ exports.arraysAnswers = {
   },
 
   truncate: function(arr) {
-    arr.splice(-1, 1);
+    arr.pop();
     return arr;
   },
 

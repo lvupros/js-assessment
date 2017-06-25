@@ -14,7 +14,7 @@ exports.asyncAnswers = {
     var def = $.Deferred();
     // go to location
     $.ajax(url).then(function(ret) {
-      //obain values
+      //obtain values
       var people = $.map(ret.people, function(person) {
         return person.name;
       });
