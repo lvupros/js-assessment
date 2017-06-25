@@ -8,18 +8,20 @@ exports.recursionAnswers = {
   permute: function(arr) {
     var newArr = [];
 
-    function combine(list1, list2) {
-      if (list1.length == 0) {
-        newArr.push(list2);
-      }
-      for (var i = 0; i < list1.length; i++) {
-        list2.push(list1[i]);
-        list1.splice(i, 1);
-        combine(list1, list2);
+    // USE .REVERSE() FUNCTION ON TWO ITEM ARRAY
+    function shuffle(list, num) {
+      for (var i = num; i < list.length; i++) {
+        var temp = arr[num];
+        arr[num] = arr[i];
+        arr[i] = temp;
+        shuffle(arr, num + 1);
+        temp = arr[num];
+        arr[num] = arr [i];
+        arr[i] = temp;
       }
     }
 
-    combine(arr, newArr);
+    shuffle(arr, 0);
     return newArr;
   },
 
