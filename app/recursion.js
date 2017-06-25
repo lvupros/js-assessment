@@ -2,7 +2,34 @@ exports = typeof window === 'undefined' ? global : window;
 
 exports.recursionAnswers = {
   listFiles: function(data, dirName) {
+    var filesArr = [];
+    var dirArr = [];
 
+    function nav(dir) {
+      var file;
+      var files = dir.files;
+
+      // folder in folder
+      dirArr.push(dir.dir);
+
+      // all files in folder to array
+      for (var i = 0; i < files.length; i++) {
+        file = files[i];
+        if (typeof file === 'string') {
+          if (!dirName || dirArr.indexOf(dirName) > -1) {
+            filesArr.push(files[i]);
+          }
+        }
+        else {
+          nav(files[i]);
+        }
+      }
+      dirArr.pop();
+    }
+
+    // feed in filepath and associated files
+    nav(data);
+    return filesArr;
   },
 
   permute: function(arr) {
@@ -21,7 +48,7 @@ exports.recursionAnswers = {
         usedNums.pop();
       }
     }
-    
+
     shuffle(arr);
     return newArr;
   },
