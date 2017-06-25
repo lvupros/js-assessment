@@ -7,21 +7,22 @@ exports.recursionAnswers = {
 
   permute: function(arr) {
     var newArr = [];
+    var usedNums = [];
 
-    // USE .REVERSE() FUNCTION ON TWO ITEM ARRAY
-    function shuffle(list, num) {
-      for (var i = num; i < list.length; i++) {
-        var temp = arr[num];
-        arr[num] = arr[i];
-        arr[i] = temp;
-        shuffle(arr, num + 1);
-        temp = arr[num];
-        arr[num] = arr [i];
-        arr[i] = temp;
+    function shuffle(list) {
+      for (var i = 0; i < list.length; i++ ) {
+        var nums = list.splice(i, 1)[0];
+        usedNums.push(nums);
+        if (list.length == 0) {
+          newArr.push(usedNums.slice());
+        }
+        shuffle(list);
+        list.splice(i, 0, nums);
+        usedNums.pop();
       }
     }
-
-    shuffle(arr, 0);
+    
+    shuffle(arr);
     return newArr;
   },
 
